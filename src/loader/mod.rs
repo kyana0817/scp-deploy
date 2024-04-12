@@ -4,7 +4,19 @@ use std::fs;
 
 #[derive(Deserialize, Debug)]
 pub struct Config {
-    text: String,
+    pub scp: Option<ScpConfig>,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct ScpConfig {
+    pub alias: Option<String>,
+    pub host: Option<String>,
+    pub port: Option<u16>,
+    pub username: Option<String>,
+    pub password: Option<String>,
+    pub remote_path: Option<String>,
+    pub local_path: Option<String>,
+    pub file_path: Option<String>,
 }
 
 pub fn parse_config(path: Option<String>) -> Config {
