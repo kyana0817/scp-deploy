@@ -1,16 +1,7 @@
-use serde::Deserialize;
-use serde_yaml;
-use std::fs;
-
-#[derive(Deserialize, Debug)]
-struct Config {
-    text: String,
-}
-
+mod loader;
+use loader::parse_config;
 fn main() {
-    let file = fs::read_to_string("./config.yaml").expect("cannot read file");
-    let config = serde_yaml::from_str::<Config>(&file).expect("cannot parse yaml");
-
+    let config = parse_config(None);
     println!("{:?}", config)
 }
 
