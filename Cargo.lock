@@ -1168,6 +1168,7 @@ version = "0.1.0"
 dependencies = [
  "russh",
  "russh-config",
+ "russh-keys",
  "serde",
  "serde_yaml",
  "tokio",

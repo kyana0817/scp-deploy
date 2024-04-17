@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 russh = "0.43.0"
 russh-config = "0.7.1"
+russh-keys = "0.43.0"
 serde = { version = "1.0.197", features = ["derive"] }
 serde_yaml = "0.9.34"
 tokio = "1.37.0"
