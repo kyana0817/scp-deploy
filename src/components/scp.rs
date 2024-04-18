@@ -29,8 +29,8 @@ impl client::Handler for Client {
 }
 
 impl Scp {
-    pub fn new(config: ScpConfig) -> Self {
-        let ssh_config = match config {
+    pub fn new(configs: Vec<ScpConfig>) -> Self {
+        let ssh_config = match configs.get(0).unwrap() {
             ScpConfig {
                 alias: Some(alias), ..
             } => russh_config::Config::default(&alias),
@@ -40,13 +40,22 @@ impl Scp {
             _ => panic!("Invalid scp config schema"),
         };
 
-        Scp {
+        Self {
             ssh_config,
             client_config: client::Config::default(),
         }
     }
 
-    pub async fn deploy(mut self) -> Result<()> {
+    pub fn run() {
+        todo!()
+    }
+
+    pub fn with_client_config(mut self, client_config: client::Config) -> Self {
+        self.client_config = client_config;
+        self
+    }
+
+    pub async fn deploy(self) -> Result<()> {
         let config = Arc::new(self.client_config);
         let sh = Client {};
         let key_path = PathBuf::from(

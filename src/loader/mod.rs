@@ -4,7 +4,7 @@ use std::fs;
 
 #[derive(Deserialize, Debug)]
 pub struct Config {
-    pub scp: Option<ScpConfig>,
+    pub scp: Option<Vec<ScpConfig>>,
 }
 
 #[derive(Deserialize, Debug)]

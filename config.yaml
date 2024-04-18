@@ -1,4 +1,7 @@
 scp:
-  alias: test
+  - ssh:
+      alias: test
+    
+    
   
   
